@@ -30,6 +30,9 @@ public class AssessmentService {
 	public void delete(long id) {
 		 assessmentRepository.deleteById(id);
 	}
+	public Optional<Assessment> get(long id) {
+		return assessmentRepository.findById(id);
+	}
 	
 	
 }

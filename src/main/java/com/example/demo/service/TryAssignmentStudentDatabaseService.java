@@ -41,8 +41,19 @@ public class TryAssignmentStudentDatabaseService {
 	}
 
 	public TryAssignmentStudentDatabase addRecord(TryAssignmentStudentDatabase _record) {
+		TryAssignmentStudentDatabase data;
+		 data=repository.save(_record);
+		System.out.println("Inside service record adding="+data.toString());
+		return data;
+	}
+
+	public TryAssignmentStudentDatabase getRecord(String title, String email) {
+		return repository.findByAssignmentTitleAndStudentEmail(title, email);
+	}
+
+	public Optional<TryAssignmentStudentDatabase> get(long id) {
 		
-		return repository.save(_record);
+		return repository.findById(id);
 	}
 	
 }

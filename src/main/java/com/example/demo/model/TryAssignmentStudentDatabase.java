@@ -20,7 +20,7 @@ public class TryAssignmentStudentDatabase {
 		return Id;
 	}
 	public void setId(Long id) {
-		Id = id;
+		this.Id = id;
 	}
 	public String getAssignmentTitle() {
 		return assignmentTitle;
@@ -64,6 +64,12 @@ public class TryAssignmentStudentDatabase {
 		this.assignmentSolution = assignmentSolution;
 		this.studentName = studentName;
 		this.studentEmail = studentEmail;
+	}
+	@Override
+	public String toString() {
+		return "TryAssignmentStudentDatabase [Id=" + Id + ", assignmentTitle=" + assignmentTitle
+				+ ", assignmentDescription=" + assignmentDescription + ", assignmentSolution=" + assignmentSolution
+				+ ", studentName=" + studentName + ", studentEmail=" + studentEmail + "]";
 	}
 	
 	
