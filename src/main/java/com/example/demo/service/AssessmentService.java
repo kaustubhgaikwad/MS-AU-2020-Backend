@@ -33,6 +33,9 @@ public class AssessmentService {
 	public Optional<Assessment> get(long id) {
 		return assessmentRepository.findById(id);
 	}
+	public Assessment getByTitle(String title) {
+		return assessmentRepository.findByTitle(title);
+	}
 	
 	
 }

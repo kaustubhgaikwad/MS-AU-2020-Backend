@@ -24,6 +24,9 @@ public class StudentAssignmentService {
 //	@Autowired
 //	StudentService service;
 //	
+	
+	
+	
 	public List<StudentAssignment> getAll() {
 		return (List<StudentAssignment>) repository.findAll();
 	}
@@ -57,6 +60,10 @@ public class StudentAssignmentService {
 
 	public Optional<StudentAssignment> get(long id) {
 		return repository.findById(id);
+	}
+	
+	public List<StudentAssignment> getByEmail(String email){
+		return repository.findByStudentEmail(email);
 	}
 
 }

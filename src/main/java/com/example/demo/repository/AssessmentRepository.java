@@ -6,6 +6,6 @@ import com.example.demo.model.Assessment;
 
 public interface AssessmentRepository extends CrudRepository<Assessment,Long> {
 	
-	
+	Assessment findByTitle(String title);
 
 }

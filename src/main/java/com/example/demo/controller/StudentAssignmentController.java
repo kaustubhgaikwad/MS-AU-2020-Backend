@@ -32,6 +32,8 @@ public class StudentAssignmentController {
 	@Autowired
 	AssessmentService assessmentservice;
 	
+	
+	
 	@GetMapping("/all")
 	public List<StudentAssignment> getAll(){
 		return service.getAll();
@@ -72,6 +74,11 @@ public class StudentAssignmentController {
 		}else {
 			return null;
 		}
+	}
+	
+	@GetMapping("/all/{email}")
+	public List<StudentAssignment> getByEmail(@PathVariable("email") String email) {
+		return service.getByEmail(email);
 	}
 
 }
