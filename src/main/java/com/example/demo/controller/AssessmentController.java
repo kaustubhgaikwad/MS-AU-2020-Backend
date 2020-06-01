@@ -31,8 +31,8 @@ public class AssessmentController {
 		System.out.println("Inside getall");
 		return assessmentService.getAll();
 	}
-	@GetMapping("/title/{title}")
-	public Assessment getByTitle(@PathVariable String title) {
+	@GetMapping("/title")
+	public Assessment getByTitle(@RequestBody String title) {
 		System.out.println("Inside assignment controller="+title);
 		return assessmentService.getByTitle(title);
 	}

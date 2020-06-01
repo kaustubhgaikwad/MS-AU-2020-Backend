@@ -55,5 +55,9 @@ public class TryAssignmentStudentDatabaseService {
 		
 		return repository.findById(id);
 	}
+
+	public List<TryAssignmentStudentDatabase> getByEmail(String email) {
+		return (List<TryAssignmentStudentDatabase>) repository.findByStudentEmail(email);
+	}
 	
 }

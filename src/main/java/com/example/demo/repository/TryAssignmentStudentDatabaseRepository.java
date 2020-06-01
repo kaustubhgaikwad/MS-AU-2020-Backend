@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -9,6 +11,6 @@ import com.example.demo.model.TryAssignmentStudentDatabase;
 public interface TryAssignmentStudentDatabaseRepository extends CrudRepository<TryAssignmentStudentDatabase,Long> {
 	
 	TryAssignmentStudentDatabase findByAssignmentTitleAndStudentEmail(String title,String email);
-	
+	List<TryAssignmentStudentDatabase> findByStudentEmail(String email);
 	
 }

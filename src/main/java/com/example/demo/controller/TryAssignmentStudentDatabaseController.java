@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Assessment;
+import com.example.demo.model.Student;
+import com.example.demo.model.StudentAssignment;
 import com.example.demo.model.TryAssignmentStudentDatabase;
+import com.example.demo.service.StudentService;
 import com.example.demo.service.TryAssignmentStudentDatabaseService;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -24,6 +26,9 @@ public class TryAssignmentStudentDatabaseController {
 
 	@Autowired
 	TryAssignmentStudentDatabaseService service;
+	
+	@Autowired
+	StudentService studentService;
 	
 	@GetMapping("/all")
 	public List<TryAssignmentStudentDatabase> getAll(){
@@ -35,10 +40,23 @@ public class TryAssignmentStudentDatabaseController {
 		return service.get(id);
 	}
 	
+	@GetMapping("/all/{email}")
+	public List<TryAssignmentStudentDatabase> getByEmail(@PathVariable("email") String email) {
+		return service.getByEmail(email);
+	}
+	
 	@PostMapping("/add")
 	public TryAssignmentStudentDatabase addRecord(@RequestBody TryAssignmentStudentDatabase _record)
 	{
 		System.out.println("Inside Conroller Record added="+_record);
+		Student student = studentService.getStudentByEmail(_record.getStudentEmail()).get();
+		String name = student.getName();
+		Long id = student.getId();
+		_record.setStudentName(name);
+		_record.setStudentId(id);
+		_record.setScore(0L);
+		System.out.println("Inside Conroller Record added="+_record);
+		//return service.addRecord(_record);
 		return service.addRecord(_record);
 	}
 	

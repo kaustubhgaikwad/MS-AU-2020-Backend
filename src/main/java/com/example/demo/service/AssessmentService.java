@@ -34,7 +34,10 @@ public class AssessmentService {
 		return assessmentRepository.findById(id);
 	}
 	public Assessment getByTitle(String title) {
-		return assessmentRepository.findByTitle(title);
+		System.out.println("Inside assignment service title="+title);
+		Assessment data=assessmentRepository.findByTitle(title);
+		System.out.println("data return from assignment table="+data);
+		return data;
 	}
 	
 	

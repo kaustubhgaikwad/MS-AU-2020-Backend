@@ -63,6 +63,7 @@ public class StudentAssignmentService {
 	}
 	
 	public List<StudentAssignment> getByEmail(String email){
+		
 		return repository.findByStudentEmail(email);
 	}
 

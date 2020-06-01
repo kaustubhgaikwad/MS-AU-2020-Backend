@@ -10,17 +10,31 @@ public class TryAssignmentStudentDatabase {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long Id;
+	private Long id;
 	private String assignmentTitle;
 	private String assignmentDescription;
 	private String assignmentSolution;
 	private String studentName;
 	private String studentEmail;
+	private Long assignmentId;
+	private Long studentId;
+	private Long score;
+	public TryAssignmentStudentDatabase(String assignmentTitle, String assignmentDescription, String assignmentSolution,
+			String studentName, String studentEmail, Long assignmentId, Long studentId, Long score) {
+		this.assignmentTitle = assignmentTitle;
+		this.assignmentDescription = assignmentDescription;
+		this.assignmentSolution = assignmentSolution;
+		this.studentName = studentName;
+		this.studentEmail = studentEmail;
+		this.assignmentId = assignmentId;
+		this.studentId = studentId;
+		this.score = score;
+	}
 	public Long getId() {
-		return Id;
+		return id;
 	}
 	public void setId(Long id) {
-		this.Id = id;
+		this.id = id;
 	}
 	public String getAssignmentTitle() {
 		return assignmentTitle;
@@ -52,27 +66,28 @@ public class TryAssignmentStudentDatabase {
 	public void setStudentEmail(String studentEmail) {
 		this.studentEmail = studentEmail;
 	}
+	public Long getAssignmentId() {
+		return assignmentId;
+	}
+	public void setAssignmentId(Long assignmentId) {
+		this.assignmentId = assignmentId;
+	}
+	public Long getStudentId() {
+		return studentId;
+	}
+	public void setStudentId(Long studentId) {
+		this.studentId = studentId;
+	}
+	public Long getScore() {
+		return score;
+	}
+	public void setScore(Long score) {
+		this.score = score;
+	}
 	
-	public TryAssignmentStudentDatabase(){
+	public TryAssignmentStudentDatabase() {
 		
 	}
-	public TryAssignmentStudentDatabase(String assignmentTitle, String assignmentDescription, String assignmentSolution,
-			String studentName, String studentEmail) {
-		
-		this.assignmentTitle = assignmentTitle;
-		this.assignmentDescription = assignmentDescription;
-		this.assignmentSolution = assignmentSolution;
-		this.studentName = studentName;
-		this.studentEmail = studentEmail;
-	}
-	@Override
-	public String toString() {
-		return "TryAssignmentStudentDatabase [Id=" + Id + ", assignmentTitle=" + assignmentTitle
-				+ ", assignmentDescription=" + assignmentDescription + ", assignmentSolution=" + assignmentSolution
-				+ ", studentName=" + studentName + ", studentEmail=" + studentEmail + "]";
-	}
-	
-	
 	
 	
 }
