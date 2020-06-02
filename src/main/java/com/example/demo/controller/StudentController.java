@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,11 @@ public class StudentController {
 	@GetMapping("/email/{email}")
 	public Optional<Student> getStudentByEmail(@PathVariable("email") String email) {
 		return studentService.getStudentByEmail(email);
+	}
+	
+	@GetMapping("/all")
+	public List<Student> getAll(){
+		return studentService.getAll();
 	}
 
 	

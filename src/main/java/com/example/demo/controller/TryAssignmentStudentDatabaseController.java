@@ -75,6 +75,7 @@ public class TryAssignmentStudentDatabaseController {
 			update_record.setAssignmentTitle(record.getAssignmentTitle());
 			update_record.setStudentEmail(record.getStudentEmail());
 			update_record.setStudentName(record.getStudentName());
+			update_record.setScore(record.getScore());
 			return service.addRecord(update_record);
 		}else {
 			return null;

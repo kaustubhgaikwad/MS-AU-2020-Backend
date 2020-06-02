@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ public class StudentService {
 	
 	public Optional<Student> getStudentByEmail(String email) {
 		return studentRepository.findByEmailId(email);
+	}
+	
+	public List<Student> getAll() {
+		return (List<Student>) studentRepository.findAll();
 	}
 	
 }
