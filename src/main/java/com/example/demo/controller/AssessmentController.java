@@ -55,6 +55,7 @@ public class AssessmentController {
 			System.out.println("Output of .get method()= "+ _assessment);
 			_assessment.setTitle(assessment.getTitle());
 			_assessment.setDescription(assessment.getDescription());
+			assessmentService.update(_assessment);
 			return assessmentService.add(_assessment);
 		}
 		else {

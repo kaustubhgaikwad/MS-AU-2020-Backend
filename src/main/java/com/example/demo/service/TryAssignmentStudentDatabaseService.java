@@ -23,6 +23,24 @@ public class TryAssignmentStudentDatabaseService {
 	@Autowired
 	AssessmentService assessmentService;
 	
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+	
+	public List<TryAssignmentStudentDatabase> getByAssignmentId(Long id){
+		return repository.findByAssignmentId(id);
+		
+	}
+	
+	public void updateTryAssignmentStudentDatabase(Long id,TryAssignmentStudentDatabase record) {
+		System.out.println("Inside studentassignment service data="+record);
+		TryAssignmentStudentDatabase data = repository.findById(id).get();
+		data.setAssignmentTitle(record.getAssignmentTitle());
+		data.setAssignmentDescription(record.getAssignmentDescription());
+		repository.save(data);
+		
+	}
+	
 	public List<?> findAssignmentsDone(){
 		return (List<?>) repository.findAssignmentsDone();
 	}

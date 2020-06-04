@@ -22,5 +22,6 @@ public interface TryAssignmentStudentDatabaseRepository extends CrudRepository<T
 	@Query("select sum(score) as score from TryAssignmentStudentDatabase group by assignmentId having assignmentId= 1 ")
 	List<?> getScore(Long id);
 	
+	List<TryAssignmentStudentDatabase> findByAssignmentId(Long id);
 	
 }

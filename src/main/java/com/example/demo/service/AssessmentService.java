@@ -7,13 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Assessment;
+import com.example.demo.model.TryAssignmentStudentDatabase;
 import com.example.demo.repository.AssessmentRepository;
+import com.example.demo.repository.TryAssignmentStudentDatabaseRepository;
 
 @Service
 public class AssessmentService {
 
 	@Autowired
 	AssessmentRepository assessmentRepository;
+	
+	@Autowired
+	TryAssignmentStudentDatabaseService service;
 
 	public List<Assessment> getAll() {
 		return (List<Assessment>) assessmentRepository.findAll();
@@ -28,6 +33,10 @@ public class AssessmentService {
 	}
 
 	public void delete(long id) {
+		List<TryAssignmentStudentDatabase> list = service.getByAssignmentId(id);
+		for(int i=0;i<list.size();i++) {
+			service.delete(list.get(i).getId());
+		}
 		 assessmentRepository.deleteById(id);
 	}
 	public Optional<Assessment> get(long id) {
@@ -38,6 +47,16 @@ public class AssessmentService {
 		Assessment data=assessmentRepository.findByTitle(title);
 		System.out.println("data return from assignment table="+data);
 		return data;
+	}
+	public void update(Assessment assessment) {
+		System.out.println("Inside update Assessment of assement service data="+assessment);
+		List<TryAssignmentStudentDatabase> list = service.getByAssignmentId(assessment.getId());
+		for(int i=0;i<list.size();i++) {
+			list.get(i).setAssignmentTitle(assessment.getTitle());
+			list.get(i).setAssignmentDescription(assessment.getDescription());
+			service.updateTryAssignmentStudentDatabase(list.get(i).getId(),list.get(i));
+		}
+		
 	}
 	
 	
