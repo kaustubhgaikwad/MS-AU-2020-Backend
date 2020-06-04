@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name="try_student")
+@Entity(name="student")
 public class Student {
 	
 	@Id
@@ -13,15 +13,26 @@ public class Student {
 	private Long id;
 	private String name;
 	private String emailId;
+	private Long assignmentMarks;
+	private Long projectMarks;
+	private Long score;
+	private Long percentile;
+	
+	
+	public Student(String name, String emailId, Long assignmentMarks, Long projectMarks, Long score, Long percentile,
+			Long rank) {
+	
+		this.name = name;
+		this.emailId = emailId;
+		this.assignmentMarks = assignmentMarks;
+		this.projectMarks = projectMarks;
+		this.score = score;
+		this.percentile = percentile;
+		
+	}
 	
 	public Student() {
 		
-	}
-
-	public Student(String name, String emailId) {
-		
-		this.name = name;
-		this.emailId = emailId;
 	}
 
 	public Long getId() {
@@ -48,13 +59,47 @@ public class Student {
 		this.emailId = emailId;
 	}
 
+	public Long getAssignmentMarks() {
+		return assignmentMarks;
+	}
+
+	public void setAssignmentMarks(Long assignmentMarks) {
+		this.assignmentMarks = assignmentMarks;
+	}
+
+	public Long getProjectMarks() {
+		return projectMarks;
+	}
+
+	public void setProjectMarks(Long projectMarks) {
+		this.projectMarks = projectMarks;
+	}
+
+	public Long getScore() {
+		return score;
+	}
+
+	public void setScore(Long score) {
+		this.score = score;
+	}
+
+	public Long getPercentile() {
+		return percentile;
+	}
+
+	public void setPercentile(Long percent) {
+		this.percentile = percent;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", emailId=" + emailId + "]";
+		return "Student [id=" + id + ", name=" + name + ", emailId=" + emailId + ", assignmentMarks=" + assignmentMarks
+				+ ", projectMarks=" + projectMarks + ", score=" + score + ", percentile=" + percentile + ", rank="
+				+  "]";
 	}
 	
 	
 	
-	
-
 }

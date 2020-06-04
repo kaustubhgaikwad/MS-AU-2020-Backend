@@ -20,6 +20,18 @@ public class TryAssignmentStudentDatabaseService {
 	@Autowired
 	StudentService service;
 	
+	@Autowired
+	AssessmentService assessmentService;
+	
+	public List<?> findAssignmentsDone(){
+		return (List<?>) repository.findAssignmentsDone();
+	}
+	
+	public List<TryAssignmentStudentDatabase> getAllById(Long id){
+		
+		return repository.findByStudentId(id);
+	}
+	
 	public List<TryAssignmentStudentDatabase> getAll() {
 		return (List<TryAssignmentStudentDatabase>) repository.findAll();
 	}
@@ -59,5 +71,21 @@ public class TryAssignmentStudentDatabaseService {
 	public List<TryAssignmentStudentDatabase> getByEmail(String email) {
 		return (List<TryAssignmentStudentDatabase>) repository.findByStudentEmail(email);
 	}
+
+	public Long getScore(Long id) {
+		int number = assessmentService.getAll().size(); 
+		System.out.println("id=");
+		Long score=0L;
+		List<TryAssignmentStudentDatabase> data = repository.findByStudentId(id);
+		for(TryAssignmentStudentDatabase record : data) {
+			score+=record.getScore();
+		}
+		score = (score*100)/(number*10);
+		System.out.println("No of assignments="+number);
+		System.out.println("Score = "+score);
+		service.addAssignmentScore(score, id);
+		return  score;
+	}
+	
 	
 }

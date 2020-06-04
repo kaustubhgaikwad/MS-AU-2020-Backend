@@ -1,13 +1,9 @@
 package com.example.demo.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Project;
-import com.example.demo.model.Student;
-import com.example.demo.model.TryAssignmentStudentDatabase;
 import com.example.demo.repository.ProjectRepository;
 
 @Service
@@ -15,6 +11,9 @@ public class ProjectService {
 
 	@Autowired
 	ProjectRepository repository;
+	
+	@Autowired
+	StudentService service;
 	
 	public Project add(Project project) {
 		return repository.save(project);
@@ -25,9 +24,20 @@ public class ProjectService {
 	}
 	
 	public Project update(Long projectId,Project project) {
-
+		System.out.println(project);
 		Project data= repository.findById(projectId).get();
+		data.setProjectTitle(project.getProjectTitle());
+		data.setProjectDescription(project.getProjectDescription());
+		data.setBuild(project.getBuild());
+		data.setScore(project.getScore());
 		data.setGithubLink(project.getGithubLink());
+		data.setCompletionPercentage(project.getCompletionPercentage());
+		data.setTestingCoverage(project.getTestingCoverage());
+		data.setCurrentlyWorkingOn(project.getCurrentlyWorkingOn());
+		data.setProcessMarks(project.getProcessMarks());
+		data.setBuildMarks(project.getBuildMarks());
+		data.setTestingMarks(project.getTestingMarks());
+		service.addProjectScore(project.getScore(),project.getStudentId());
 		return repository.save(data);
 		
 		//Optional<Student> _student = service.getStudentByEmail(email);

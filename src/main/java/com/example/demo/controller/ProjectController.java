@@ -23,6 +23,7 @@ public class ProjectController {
 	
 	@GetMapping("/{id}")
 	public Project getByStudentId(@PathVariable("id") long id) {
+		System.out.println("Id="+id);
 		return service.getByStudentId(id); 
 	}
 	
